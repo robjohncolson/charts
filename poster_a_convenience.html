@@ -413,15 +413,47 @@
             padding: 15px;
             margin: 15px 0;
         }
-        
+
         .two-samples-note h4 {
             color: #e65100;
             margin-bottom: 10px;
         }
-        
+
         .two-samples-note p {
             font-size: 0.95rem;
             color: #333;
+        }
+
+        /* INTERACTIVE GENERATOR */
+        .generator-box {
+            background: #ffebee;
+            border: 2px solid #c62828;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .generate-btn {
+            background: #c62828;
+            color: white;
+            border: none;
+            padding: 10px 25px;
+            font-size: 1rem;
+            font-weight: bold;
+            border-radius: 6px;
+            cursor: pointer;
+            margin: 5px;
+        }
+
+        .generate-btn:hover {
+            opacity: 0.9;
+        }
+
+        .sample-counter {
+            margin-top: 10px;
+            font-size: 0.9rem;
+            color: #666;
         }
     </style>
 </head>
@@ -449,90 +481,97 @@
         <!-- 3. FIELD + THOUGHT PROCESS -->
         <div class="section">
             <span class="section-label">The Field & Our Process</span>
+
+            <div class="generator-box">
+                <p style="margin-bottom: 10px;">🚗 Click to pick a different spot along the road to sample from:</p>
+                <button class="generate-btn" onclick="nextSample()">Take Another Convenience Sample</button>
+                <div class="sample-counter" id="sampleCounter">Sample 1 of 6 possible locations</div>
+            </div>
+
             <div class="field-thought-row">
                 <!-- Field Grid -->
                 <div class="field-wrapper">
                     <div class="field-container">
                         <div class="side-label river-label">🌊 RIVER<br>(High Water)</div>
-                        <div class="field-grid">
+                        <div class="field-grid" id="fieldGrid">
                             <div class="grid-header">A</div>
                             <div class="grid-header">B</div>
                             <div class="grid-header">C</div>
                             <div class="grid-header">D</div>
                             <div class="grid-header">E</div>
-                            
+
                             <div class="grid-cell col-a dimmed">103</div>
                             <div class="grid-cell col-b dimmed">82</div>
                             <div class="grid-cell col-c dimmed">63</div>
                             <div class="grid-cell col-d dimmed">43</div>
-                            <div class="grid-cell col-e sampled">23</div>
-                            
+                            <div class="grid-cell col-e" data-row="1" data-val="23">23</div>
+
                             <div class="grid-cell col-a dimmed">97</div>
                             <div class="grid-cell col-b dimmed">78</div>
                             <div class="grid-cell col-c dimmed">58</div>
                             <div class="grid-cell col-d dimmed">38</div>
-                            <div class="grid-cell col-e sampled">18</div>
-                            
+                            <div class="grid-cell col-e" data-row="2" data-val="18">18</div>
+
                             <div class="grid-cell col-a dimmed">108</div>
                             <div class="grid-cell col-b dimmed">85</div>
                             <div class="grid-cell col-c dimmed">67</div>
                             <div class="grid-cell col-d dimmed">47</div>
-                            <div class="grid-cell col-e sampled">27</div>
-                            
+                            <div class="grid-cell col-e" data-row="3" data-val="27">27</div>
+
                             <div class="grid-cell col-a dimmed">95</div>
                             <div class="grid-cell col-b dimmed">73</div>
                             <div class="grid-cell col-c dimmed">54</div>
                             <div class="grid-cell col-d dimmed">35</div>
-                            <div class="grid-cell col-e sampled">14</div>
-                            
+                            <div class="grid-cell col-e" data-row="4" data-val="14">14</div>
+
                             <div class="grid-cell col-a dimmed">101</div>
                             <div class="grid-cell col-b dimmed">88</div>
                             <div class="grid-cell col-c dimmed">61</div>
                             <div class="grid-cell col-d dimmed">41</div>
-                            <div class="grid-cell col-e sampled">21</div>
-                            
+                            <div class="grid-cell col-e" data-row="5" data-val="21">21</div>
+
                             <div class="grid-cell col-a dimmed">92</div>
                             <div class="grid-cell col-b dimmed">76</div>
                             <div class="grid-cell col-c dimmed">55</div>
                             <div class="grid-cell col-d dimmed">33</div>
-                            <div class="grid-cell col-e">16</div>
-                            
+                            <div class="grid-cell col-e" data-row="6" data-val="16">16</div>
+
                             <div class="grid-cell col-a dimmed">106</div>
                             <div class="grid-cell col-b dimmed">81</div>
                             <div class="grid-cell col-c dimmed">69</div>
                             <div class="grid-cell col-d dimmed">46</div>
-                            <div class="grid-cell col-e">25</div>
-                            
+                            <div class="grid-cell col-e" data-row="7" data-val="25">25</div>
+
                             <div class="grid-cell col-a dimmed">99</div>
                             <div class="grid-cell col-b dimmed">79</div>
                             <div class="grid-cell col-c dimmed">52</div>
                             <div class="grid-cell col-d dimmed">39</div>
-                            <div class="grid-cell col-e">19</div>
-                            
+                            <div class="grid-cell col-e" data-row="8" data-val="19">19</div>
+
                             <div class="grid-cell col-a dimmed">104</div>
                             <div class="grid-cell col-b dimmed">84</div>
                             <div class="grid-cell col-c dimmed">66</div>
                             <div class="grid-cell col-d dimmed">44</div>
-                            <div class="grid-cell col-e">24</div>
-                            
+                            <div class="grid-cell col-e" data-row="9" data-val="24">24</div>
+
                             <div class="grid-cell col-a dimmed">91</div>
                             <div class="grid-cell col-b dimmed">72</div>
                             <div class="grid-cell col-c dimmed">57</div>
                             <div class="grid-cell col-d dimmed">32</div>
-                            <div class="grid-cell col-e">12</div>
+                            <div class="grid-cell col-e" data-row="10" data-val="12">12</div>
                         </div>
                         <div class="side-label road-label">🛤️ ROAD<br>(Low Water)</div>
                     </div>
                     <div class="car-icon">🚗 ← Farmer's car parked here</div>
                 </div>
-                
+
                 <!-- Thought Process -->
                 <div class="thought-box">
                     <h4>💭 Our Thought Process</h4>
                     <div class="thought-content">
                         <p>The farmer only samples plots <strong>closest to where he parked</strong> (the road).</p>
-                        <p style="margin-top: 10px;">We take the 5 easiest plots to reach:</p>
-                        <p style="margin-top: 10px; font-family: monospace; background: white; padding: 8px; border-radius: 4px;">
+                        <p style="margin-top: 10px;">We take 5 adjacent plots that are easy to reach:</p>
+                        <p id="coordsDisplay" style="margin-top: 10px; font-family: monospace; background: white; padding: 8px; border-radius: 4px;">
                             E1, E2, E3, E4, E5
                         </p>
                     </div>
@@ -540,7 +579,7 @@
                         Average = <sup>Total</sup>/<sub>Sample Size</sub>
                     </div>
                     <div class="thought-content">
-                        <p style="font-family: monospace; font-size: 0.9rem;">
+                        <p id="calcDisplay" style="font-family: monospace; font-size: 0.9rem;">
                             = (23 + 18 + 27 + 14 + 21) / 5<br>
                             = 103 / 5<br>
                             = <strong style="color: #c62828;">20.6</strong>
@@ -553,11 +592,11 @@
         <!-- 4. RESULTS -->
         <div class="section">
             <span class="section-label">The Results</span>
-            
+
             <div class="results-row">
                 <div class="result-card sample">
                     <div class="label">Our Sample Mean</div>
-                    <div class="value">20.6</div>
+                    <div class="value" id="sampleMeanValue">20.6</div>
                 </div>
                 <div class="result-card true-mean">
                     <div class="label">True Population Mean</div>
@@ -565,45 +604,45 @@
                     <div class="note">(The farmer can't know this due to time constraints)</div>
                 </div>
             </div>
-            
+
             <div class="numberline-container">
                 <h4>How far off is our estimate?</h4>
                 <div class="numberline">
                     <div class="numberline-axis"></div>
-                    
+
                     <!-- Tick marks -->
                     <div class="nl-tick" style="left: 10%;"></div>
                     <div class="nl-tick-label" style="left: 10%;">20</div>
-                    
+
                     <div class="nl-tick" style="left: 30%;"></div>
                     <div class="nl-tick-label" style="left: 30%;">40</div>
-                    
+
                     <div class="nl-tick" style="left: 50%;"></div>
                     <div class="nl-tick-label" style="left: 50%;">60</div>
-                    
+
                     <div class="nl-tick" style="left: 70%;"></div>
                     <div class="nl-tick-label" style="left: 70%;">80</div>
-                    
+
                     <!-- Markers -->
-                    <div class="nl-marker sample" style="left: 11%;">
+                    <div class="nl-marker sample" id="nlMarkerSample" style="left: 11%;">
                         <div class="dot"></div>
-                        <div class="label">20.6<br>(Sample)</div>
+                        <div class="label" id="nlLabelSample">20.6<br>(Sample)</div>
                     </div>
-                    
+
                     <div class="nl-marker true-mean" style="left: 50%;">
                         <div class="dot"></div>
                         <div class="label">59.86<br>(True)</div>
                     </div>
                 </div>
-                <div class="distance-note">
+                <div class="distance-note" id="distanceNote">
                     Our estimate is <strong>39.26 bushels TOO LOW</strong> (20.6 − 59.86 = −39.26)
                 </div>
             </div>
-            
-            <div class="two-samples-note">
-                <h4>🔄 What if we sample again?</h4>
-                <p>If we take <strong>another</strong> convenience sample (say, E6-E10), we get: (16 + 25 + 19 + 24 + 12) / 5 = <strong>19.2</strong></p>
-                <p style="margin-top: 8px;">Both samples are <strong>consistently too low</strong>. The problem isn't random—it's systematic.</p>
+
+            <div class="two-samples-note" id="allSamplesNote">
+                <h4>🔄 Try all 6 possible convenience samples!</h4>
+                <p>Click the button above to cycle through all 6 ways to pick 5 adjacent plots from column E.</p>
+                <p style="margin-top: 8px;" id="samplesHistory">Samples seen: <strong>1</strong> of 6</p>
             </div>
         </div>
         
@@ -637,5 +676,81 @@
             </div>
         </div>
     </div>
+
+    <script>
+        // Column E values by row (1-10)
+        const colEValues = {
+            1: 23, 2: 18, 3: 27, 4: 14, 5: 21,
+            6: 16, 7: 25, 8: 19, 9: 24, 10: 12
+        };
+
+        // Current sample index (0-5, representing starting rows 1-6)
+        let currentSampleIndex = 0;
+        const seenSamples = new Set([0]);
+
+        function updateDisplay(startRow) {
+            const cells = document.querySelectorAll('.grid-cell.col-e[data-row]');
+
+            // Clear all sampled classes
+            cells.forEach(cell => cell.classList.remove('sampled'));
+
+            // Get the 5 consecutive rows
+            const rows = [];
+            const values = [];
+            for (let r = startRow; r < startRow + 5; r++) {
+                rows.push(r);
+                values.push(colEValues[r]);
+                // Highlight the cell
+                const cell = document.querySelector(`.grid-cell.col-e[data-row="${r}"]`);
+                if (cell) cell.classList.add('sampled');
+            }
+
+            // Calculate mean
+            const sum = values.reduce((a, b) => a + b, 0);
+            const mean = (sum / 5).toFixed(1);
+
+            // Update coordinates display
+            const coords = rows.map(r => `E${r}`).join(', ');
+            document.getElementById('coordsDisplay').textContent = coords;
+
+            // Update calculation display
+            document.getElementById('calcDisplay').innerHTML =
+                `= (${values.join(' + ')}) / 5<br>` +
+                `= ${sum} / 5<br>` +
+                `= <strong style="color: #c62828;">${mean}</strong>`;
+
+            // Update sample mean value
+            document.getElementById('sampleMeanValue').textContent = mean;
+
+            // Update number line marker (scale: 10-30 maps to ~5-15%)
+            const position = ((parseFloat(mean) - 10) / 80) * 80 + 5;
+            document.getElementById('nlMarkerSample').style.left = Math.max(5, Math.min(85, position)) + '%';
+            document.getElementById('nlLabelSample').innerHTML = `${mean}<br>(Sample)`;
+
+            // Update distance note
+            const diff = (parseFloat(mean) - 59.86).toFixed(2);
+            document.getElementById('distanceNote').innerHTML =
+                `Our estimate is <strong>${Math.abs(diff)} bushels TOO LOW</strong> (${mean} − 59.86 = ${diff})`;
+
+            // Update sample counter
+            document.getElementById('sampleCounter').textContent =
+                `Sample ${currentSampleIndex + 1} of 6 possible locations (rows E${startRow}–E${startRow + 4})`;
+
+            // Update samples history
+            document.getElementById('samplesHistory').innerHTML =
+                `Samples seen: <strong>${seenSamples.size}</strong> of 6` +
+                (seenSamples.size === 6 ? ' — <strong style="color: #c62828;">ALL samples are too low!</strong>' : '');
+        }
+
+        function nextSample() {
+            currentSampleIndex = (currentSampleIndex + 1) % 6;
+            seenSamples.add(currentSampleIndex);
+            const startRow = currentSampleIndex + 1; // Starting rows are 1-6
+            updateDisplay(startRow);
+        }
+
+        // Initialize with first sample
+        updateDisplay(1);
+    </script>
 </body>
 </html>
