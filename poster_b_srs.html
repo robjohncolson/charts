@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Group B: Simple Random Sample Poster</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f5f5f5;
+            padding: 20px;
+        }
+        
+        .poster {
+            max-width: 850px;
+            margin: 0 auto;
+            background: white;
+            border: 3px solid #1565c0;
+            border-radius: 8px;
+            padding: 25px;
+        }
+        
+        .group-badge {
+            background: #1565c0;
+            color: white;
+            display: inline-block;
+            padding: 6px 20px;
+            border-radius: 20px;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+        
+        /* SECTION STYLING */
+        .section {
+            margin-bottom: 25px;
+            padding-bottom: 20px;
+            border-bottom: 2px dashed #ddd;
+        }
+        
+        .section:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+        }
+        
+        .section-label {
+            background: #424242;
+            color: white;
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        /* STORY SECTION */
+        .story-box {
+            background: #fff3e0;
+            border-left: 5px solid #ff9800;
+            padding: 15px;
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+        
+        .story-box strong {
+            color: #e65100;
+        }
+        
+        /* METHOD DECLARATION */
+        .method-declaration {
+            background: #e3f2fd;
+            border: 3px solid #1565c0;
+            border-radius: 8px;
+            padding: 15px;
+            text-align: center;
+        }
+        
+        .method-declaration h2 {
+            color: #1565c0;
+            font-size: 1.8rem;
+            margin-bottom: 5px;
+        }
+        
+        .method-declaration .subtitle {
+            color: #666;
+            font-style: italic;
+        }
+        
+        /* FIELD + THOUGHT PROCESS LAYOUT */
+        .field-thought-row {
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 20px;
+            align-items: start;
+        }
+        
+        /* FIELD GRID */
+        .field-wrapper {
+            background: #fafafa;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            padding: 15px;
+        }
+        
+        .field-container {
+            display: flex;
+            gap: 5px;
+            justify-content: center;
+            align-items: stretch;
+        }
+        
+        .side-label {
+            writing-mode: vertical-rl;
+            text-orientation: mixed;
+            padding: 8px 6px;
+            font-weight: bold;
+            font-size: 0.75rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 4px;
+            color: white;
+        }
+        
+        .river-label { background: #1565c0; }
+        .road-label { background: #6d4c41; }
+        
+        .field-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 38px);
+            gap: 1px;
+            background: #333;
+            border: 2px solid #333;
+        }
+        
+        .grid-header {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 5px;
+            font-weight: bold;
+            font-size: 0.75rem;
+        }
+        
+        .grid-cell {
+            text-align: center;
+            padding: 6px 2px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            background: white;
+            position: relative;
+        }
+        
+        .col-a { background: #a5d6a7; color: #1b5e20; }
+        .col-b { background: #c5e1a5; color: #33691e; }
+        .col-c { background: #fff59d; color: #f57f17; }
+        .col-d { background: #ffcc80; color: #e65100; }
+        .col-e { background: #ffab91; color: #bf360c; }
+        
+        .grid-cell.sample1 {
+            border: 3px solid #1565c0;
+            font-weight: bold;
+        }
+        
+        .grid-cell.sample2 {
+            border: 3px solid #7b1fa2;
+            font-weight: bold;
+        }
+        
+        /* THOUGHT PROCESS */
+        .thought-box {
+            background: #f5f5f5;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            padding: 15px;
+        }
+        
+        .thought-box h4 {
+            color: #1565c0;
+            margin-bottom: 10px;
+            font-size: 0.95rem;
+        }
+        
+        .thought-content {
+            font-size: 0.95rem;
+            line-height: 1.8;
+        }
+        
+        .equation-box {
+            background: white;
+            border: 2px solid #1565c0;
+            border-radius: 6px;
+            padding: 10px;
+            margin: 10px 0;
+            text-align: center;
+            font-family: 'Times New Roman', serif;
+            font-size: 1.1rem;
+        }
+        
+        /* TWO SAMPLES SIDE BY SIDE */
+        .two-samples-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin: 15px 0;
+        }
+        
+        .sample-card {
+            border-radius: 8px;
+            padding: 15px;
+        }
+        
+        .sample-card.sample1 {
+            background: #e3f2fd;
+            border: 2px solid #1565c0;
+        }
+        
+        .sample-card.sample2 {
+            background: #f3e5f5;
+            border: 2px solid #7b1fa2;
+        }
+        
+        .sample-card h5 {
+            margin-bottom: 10px;
+            font-size: 1rem;
+        }
+        
+        .sample-card.sample1 h5 { color: #1565c0; }
+        .sample-card.sample2 h5 { color: #7b1fa2; }
+        
+        .sample-card .coords {
+            font-family: monospace;
+            background: white;
+            padding: 5px 10px;
+            border-radius: 4px;
+            margin-bottom: 10px;
+            font-size: 0.85rem;
+        }
+        
+        .sample-card .calc {
+            font-family: monospace;
+            font-size: 0.85rem;
+            line-height: 1.6;
+        }
+        
+        .sample-card .result {
+            font-size: 1.5rem;
+            font-weight: bold;
+            text-align: center;
+            margin-top: 10px;
+            padding: 10px;
+            background: white;
+            border-radius: 6px;
+        }
+        
+        .sample-card.sample1 .result { color: #1565c0; }
+        .sample-card.sample2 .result { color: #7b1fa2; }
+        
+        /* RESULTS */
+        .result-card {
+            background: #f5f5f5;
+            border-radius: 8px;
+            padding: 15px;
+            text-align: center;
+        }
+        
+        .result-card.true-mean {
+            border: 2px solid #4caf50;
+            background: #e8f5e9;
+            margin: 15px 0;
+        }
+        
+        .result-card .label {
+            font-size: 0.85rem;
+            color: #666;
+            margin-bottom: 5px;
+        }
+        
+        .result-card .value {
+            font-size: 2rem;
+            font-weight: bold;
+        }
+        
+        .result-card.true-mean .value { color: #4caf50; }
+        .result-card .note {
+            font-size: 0.8rem;
+            color: #888;
+            margin-top: 5px;
+            font-style: italic;
+        }
+        
+        /* NUMBER LINE */
+        .numberline-container {
+            background: #fafafa;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 15px 0;
+        }
+        
+        .numberline-container h4 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 15px;
+        }
+        
+        .numberline {
+            position: relative;
+            height: 80px;
+            margin: 0 30px;
+        }
+        
+        .numberline-axis {
+            position: absolute;
+            top: 35px;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: #333;
+        }
+        
+        .numberline-axis::before,
+        .numberline-axis::after {
+            content: '';
+            position: absolute;
+            top: -4px;
+            border: 6px solid transparent;
+        }
+        
+        .numberline-axis::before {
+            left: -10px;
+            border-right-color: #333;
+        }
+        
+        .numberline-axis::after {
+            right: -10px;
+            border-left-color: #333;
+        }
+        
+        .nl-marker {
+            position: absolute;
+            top: 0;
+            transform: translateX(-50%);
+            text-align: center;
+        }
+        
+        .nl-marker .dot {
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            margin: 0 auto 5px;
+        }
+        
+        .nl-marker .label {
+            font-size: 0.7rem;
+            font-weight: bold;
+        }
+        
+        .nl-marker.sample1 .dot { background: #1565c0; }
+        .nl-marker.sample1 .label { color: #1565c0; }
+        
+        .nl-marker.sample2 .dot { background: #7b1fa2; }
+        .nl-marker.sample2 .label { color: #7b1fa2; }
+        
+        .nl-marker.true-mean .dot { background: #4caf50; }
+        .nl-marker.true-mean .label { color: #4caf50; }
+        
+        .nl-tick {
+            position: absolute;
+            top: 30px;
+            width: 2px;
+            height: 10px;
+            background: #333;
+            transform: translateX(-50%);
+        }
+        
+        .nl-tick-label {
+            position: absolute;
+            top: 45px;
+            transform: translateX(-50%);
+            font-size: 0.7rem;
+            color: #666;
+        }
+        
+        .variation-note {
+            text-align: center;
+            margin-top: 15px;
+            padding: 15px;
+            background: #fff3e0;
+            border: 2px solid #ff9800;
+            border-radius: 8px;
+        }
+        
+        .variation-note strong {
+            color: #e65100;
+        }
+        
+        /* CONCLUSION */
+        .conclusion-box {
+            background: #e3f2fd;
+            border: 3px solid #1565c0;
+            border-radius: 8px;
+            padding: 20px;
+        }
+        
+        .conclusion-box h4 {
+            color: #1565c0;
+            margin-bottom: 12px;
+        }
+        
+        .conclusion-item {
+            margin: 10px 0;
+            padding: 10px;
+            background: white;
+            border-radius: 6px;
+            border-left: 4px solid #1565c0;
+        }
+        
+        .conclusion-item strong {
+            color: #1565c0;
+        }
+        
+        .vocab-highlight {
+            background: #bbdefb;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+        
+        .vocab-highlight.purple {
+            background: #e1bee7;
+        }
+        
+        /* MNEMONIC */
+        .mnemonic-box {
+            background: linear-gradient(135deg, #1565c0, #1976d2);
+            color: white;
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .mnemonic-box h4 {
+            margin-bottom: 10px;
+            font-size: 1rem;
+        }
+        
+        .mnemonic-text {
+            font-size: 1.4rem;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+        
+        /* INTERACTIVE GENERATOR */
+        .generator-box {
+            background: #e8f5e9;
+            border: 2px solid #4caf50;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+        
+        .generate-btn {
+            background: #1565c0;
+            color: white;
+            border: none;
+            padding: 10px 25px;
+            font-size: 1rem;
+            font-weight: bold;
+            border-radius: 6px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        
+        .generate-btn.purple {
+            background: #7b1fa2;
+        }
+        
+        .generate-btn:hover {
+            opacity: 0.9;
+        }
+    </style>
+</head>
+<body>
+    <div class="poster">
+        <span class="group-badge">GROUP B: SIMPLE RANDOM SAMPLE</span>
+        
+        <!-- 1. THE STORY -->
+        <div class="section">
+            <span class="section-label">The Story</span>
+            <div class="story-box">
+                A farmer wants to know the <strong>average yield</strong> of his land, but only has time to measure <strong>5 plots</strong> of his total 50. Of the three sampling methods, our group explored <strong style="color: #1565c0;">SIMPLE RANDOM SAMPLE (SRS)</strong>.
+            </div>
+        </div>
+        
+        <!-- 2. METHOD DECLARATION -->
+        <div class="section">
+            <span class="section-label">Our Method</span>
+            <div class="method-declaration">
+                <h2>SIMPLE RANDOM SAMPLE (SRS)</h2>
+                <p class="subtitle">"We generate 5 random numbers from 1 to 50 and average the yields on those plots"</p>
+            </div>
+        </div>
+        
+        <!-- 3. FIELD + THOUGHT PROCESS -->
+        <div class="section">
+            <span class="section-label">The Field & Our Process</span>
+            
+            <div class="generator-box">
+                <p style="margin-bottom: 10px;">🎲 Click to generate random samples:</p>
+                <button class="generate-btn" onclick="generateSample1()">Generate Sample 1</button>
+                <button class="generate-btn purple" onclick="generateSample2()">Generate Sample 2</button>
+            </div>
+            
+            <div class="field-thought-row">
+                <!-- Field Grid -->
+                <div class="field-wrapper">
+                    <div class="field-container">
+                        <div class="side-label river-label">🌊 RIVER<br>(High Water)</div>
+                        <div class="field-grid" id="fieldGrid">
+                            <div class="grid-header">A</div>
+                            <div class="grid-header">B</div>
+                            <div class="grid-header">C</div>
+                            <div class="grid-header">D</div>
+                            <div class="grid-header">E</div>
+                            
+                            <div class="grid-cell col-a" data-row="1" data-col="A" data-val="103">103</div>
+                            <div class="grid-cell col-b" data-row="1" data-col="B" data-val="82">82</div>
+                            <div class="grid-cell col-c" data-row="1" data-col="C" data-val="63">63</div>
+                            <div class="grid-cell col-d" data-row="1" data-col="D" data-val="43">43</div>
+                            <div class="grid-cell col-e" data-row="1" data-col="E" data-val="23">23</div>
+                            
+                            <div class="grid-cell col-a" data-row="2" data-col="A" data-val="97">97</div>
+                            <div class="grid-cell col-b" data-row="2" data-col="B" data-val="78">78</div>
+                            <div class="grid-cell col-c" data-row="2" data-col="C" data-val="58">58</div>
+                            <div class="grid-cell col-d" data-row="2" data-col="D" data-val="38">38</div>
+                            <div class="grid-cell col-e" data-row="2" data-col="E" data-val="18">18</div>
+                            
+                            <div class="grid-cell col-a" data-row="3" data-col="A" data-val="108">108</div>
+                            <div class="grid-cell col-b" data-row="3" data-col="B" data-val="85">85</div>
+                            <div class="grid-cell col-c" data-row="3" data-col="C" data-val="67">67</div>
+                            <div class="grid-cell col-d" data-row="3" data-col="D" data-val="47">47</div>
+                            <div class="grid-cell col-e" data-row="3" data-col="E" data-val="27">27</div>
+                            
+                            <div class="grid-cell col-a" data-row="4" data-col="A" data-val="95">95</div>
+                            <div class="grid-cell col-b" data-row="4" data-col="B" data-val="73">73</div>
+                            <div class="grid-cell col-c" data-row="4" data-col="C" data-val="54">54</div>
+                            <div class="grid-cell col-d" data-row="4" data-col="D" data-val="35">35</div>
+                            <div class="grid-cell col-e" data-row="4" data-col="E" data-val="14">14</div>
+                            
+                            <div class="grid-cell col-a" data-row="5" data-col="A" data-val="101">101</div>
+                            <div class="grid-cell col-b" data-row="5" data-col="B" data-val="88">88</div>
+                            <div class="grid-cell col-c" data-row="5" data-col="C" data-val="61">61</div>
+                            <div class="grid-cell col-d" data-row="5" data-col="D" data-val="41">41</div>
+                            <div class="grid-cell col-e" data-row="5" data-col="E" data-val="21">21</div>
+                            
+                            <div class="grid-cell col-a" data-row="6" data-col="A" data-val="92">92</div>
+                            <div class="grid-cell col-b" data-row="6" data-col="B" data-val="76">76</div>
+                            <div class="grid-cell col-c" data-row="6" data-col="C" data-val="55">55</div>
+                            <div class="grid-cell col-d" data-row="6" data-col="D" data-val="33">33</div>
+                            <div class="grid-cell col-e" data-row="6" data-col="E" data-val="16">16</div>
+                            
+                            <div class="grid-cell col-a" data-row="7" data-col="A" data-val="106">106</div>
+                            <div class="grid-cell col-b" data-row="7" data-col="B" data-val="81">81</div>
+                            <div class="grid-cell col-c" data-row="7" data-col="C" data-val="69">69</div>
+                            <div class="grid-cell col-d" data-row="7" data-col="D" data-val="46">46</div>
+                            <div class="grid-cell col-e" data-row="7" data-col="E" data-val="25">25</div>
+                            
+                            <div class="grid-cell col-a" data-row="8" data-col="A" data-val="99">99</div>
+                            <div class="grid-cell col-b" data-row="8" data-col="B" data-val="79">79</div>
+                            <div class="grid-cell col-c" data-row="8" data-col="C" data-val="52">52</div>
+                            <div class="grid-cell col-d" data-row="8" data-col="D" data-val="39">39</div>
+                            <div class="grid-cell col-e" data-row="8" data-col="E" data-val="19">19</div>
+                            
+                            <div class="grid-cell col-a" data-row="9" data-col="A" data-val="104">104</div>
+                            <div class="grid-cell col-b" data-row="9" data-col="B" data-val="84">84</div>
+                            <div class="grid-cell col-c" data-row="9" data-col="C" data-val="66">66</div>
+                            <div class="grid-cell col-d" data-row="9" data-col="D" data-val="44">44</div>
+                            <div class="grid-cell col-e" data-row="9" data-col="E" data-val="24">24</div>
+                            
+                            <div class="grid-cell col-a" data-row="10" data-col="A" data-val="91">91</div>
+                            <div class="grid-cell col-b" data-row="10" data-col="B" data-val="72">72</div>
+                            <div class="grid-cell col-c" data-row="10" data-col="C" data-val="57">57</div>
+                            <div class="grid-cell col-d" data-row="10" data-col="D" data-val="32">32</div>
+                            <div class="grid-cell col-e" data-row="10" data-col="E" data-val="12">12</div>
+                        </div>
+                        <div class="side-label road-label">🛤️ ROAD<br>(Low Water)</div>
+                    </div>
+                    <p style="text-align: center; margin-top: 10px; font-size: 0.85rem; color: #666;">
+                        🔵 Sample 1 &nbsp;&nbsp; 🟣 Sample 2
+                    </p>
+                </div>
+                
+                <!-- Thought Process -->
+                <div class="thought-box">
+                    <h4>💭 Our Thought Process</h4>
+                    <div class="thought-content">
+                        <p>Every plot has an <strong>equal chance</strong> of being selected. Any plot can be chosen at random.</p>
+                    </div>
+                    <div class="equation-box">
+                        Average = <sup>Total</sup>/<sub>Sample Size</sub>
+                    </div>
+                    <div class="thought-content">
+                        <p>We sample <strong>twice</strong> to see what happens...</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Two Samples Side by Side -->
+            <div class="two-samples-row">
+                <div class="sample-card sample1">
+                    <h5>🔵 Sample 1</h5>
+                    <div class="coords" id="coords1">Click "Generate Sample 1"</div>
+                    <div class="calc" id="calc1">—</div>
+                    <div class="result" id="result1">—</div>
+                </div>
+                <div class="sample-card sample2">
+                    <h5>🟣 Sample 2</h5>
+                    <div class="coords" id="coords2">Click "Generate Sample 2"</div>
+                    <div class="calc" id="calc2">—</div>
+                    <div class="result" id="result2">—</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 4. RESULTS -->
+        <div class="section">
+            <span class="section-label">The Results</span>
+            
+            <div class="result-card true-mean">
+                <div class="label">True Population Mean</div>
+                <div class="value">59.86</div>
+                <div class="note">(The farmer can't know this due to time constraints)</div>
+            </div>
+            
+            <div class="numberline-container">
+                <h4>How far off are our estimates?</h4>
+                <div class="numberline">
+                    <div class="numberline-axis"></div>
+                    
+                    <!-- Tick marks -->
+                    <div class="nl-tick" style="left: 10%;"></div>
+                    <div class="nl-tick-label" style="left: 10%;">30</div>
+                    
+                    <div class="nl-tick" style="left: 30%;"></div>
+                    <div class="nl-tick-label" style="left: 30%;">50</div>
+                    
+                    <div class="nl-tick" style="left: 50%;"></div>
+                    <div class="nl-tick-label" style="left: 50%;">70</div>
+                    
+                    <div class="nl-tick" style="left: 70%;"></div>
+                    <div class="nl-tick-label" style="left: 70%;">90</div>
+                    
+                    <!-- Markers (will be positioned by JS) -->
+                    <div class="nl-marker sample1" id="nlMarker1" style="left: 50%; display: none;">
+                        <div class="dot"></div>
+                        <div class="label" id="nlLabel1">—</div>
+                    </div>
+                    
+                    <div class="nl-marker sample2" id="nlMarker2" style="left: 30%; display: none;">
+                        <div class="dot"></div>
+                        <div class="label" id="nlLabel2">—</div>
+                    </div>
+                    
+                    <div class="nl-marker true-mean" style="left: 40%;">
+                        <div class="dot"></div>
+                        <div class="label">59.86<br>(True)</div>
+                    </div>
+                </div>
+                
+                <div class="variation-note" id="variationNote">
+                    Generate both samples to see the <strong>VARIATION</strong> in SRS!
+                </div>
+            </div>
+        </div>
+        
+        <!-- 5. CONCLUSION -->
+        <div class="section">
+            <span class="section-label">Conclusion</span>
+            <div class="conclusion-box">
+                <h4>What does this mean for Simple Random Sampling?</h4>
+                
+                <div class="conclusion-item">
+                    <strong>BIAS:</strong> SRS is <span class="vocab-highlight">UNBIASED</span> because any plot can be chosen at random. Every plot has an equal chance.
+                </div>
+                
+                <div class="conclusion-item">
+                    <strong>VARIABILITY:</strong> SRS has <span class="vocab-highlight purple">HIGH VARIATION</span>. If we sample again, we get a totally different number. One sample might be high, another low.
+                </div>
+                
+                <div class="conclusion-item">
+                    <strong>VERDICT:</strong> SRS is <strong>FAIR but INCONSISTENT</strong>. It's unbiased on average, but any single sample might be far from the truth by random chance.
+                </div>
+            </div>
+        </div>
+        
+        <!-- 6. MNEMONIC -->
+        <div class="section">
+            <div class="mnemonic-box">
+                <h4>📝 Remember This:</h4>
+                <div class="mnemonic-text">
+                    "SRS is FAIR but INCONSISTENT—<br>right on average, wrong each time."
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        let sample1Data = null;
+        let sample2Data = null;
+        
+        function generateSample(sampleNum) {
+            const cells = Array.from(document.querySelectorAll('.grid-cell[data-val]'));
+            
+            // Clear previous selections for this sample
+            cells.forEach(cell => cell.classList.remove('sample' + sampleNum));
+            
+            // Randomly select 5 unique cells
+            const selectedIndices = [];
+            while (selectedIndices.length < 5) {
+                const idx = Math.floor(Math.random() * cells.length);
+                if (!selectedIndices.includes(idx)) {
+                    selectedIndices.push(idx);
+                }
+            }
+            
+            const selectedCells = selectedIndices.map(i => cells[i]);
+            selectedCells.forEach(cell => cell.classList.add('sample' + sampleNum));
+            
+            // Calculate
+            const coords = selectedCells.map(c => c.dataset.col + c.dataset.row);
+            const values = selectedCells.map(c => parseInt(c.dataset.val));
+            const sum = values.reduce((a, b) => a + b, 0);
+            const avg = (sum / 5).toFixed(1);
+            
+            // Update display
+            document.getElementById('coords' + sampleNum).textContent = coords.join(', ');
+            document.getElementById('calc' + sampleNum).innerHTML = 
+                `(${values.join(' + ')}) / 5<br>= ${sum} / 5`;
+            document.getElementById('result' + sampleNum).textContent = avg;
+            
+            // Update number line
+            const marker = document.getElementById('nlMarker' + sampleNum);
+            const label = document.getElementById('nlLabel' + sampleNum);
+            const position = ((parseFloat(avg) - 20) / 80) * 80 + 5; // Scale 20-100 to 5-85%
+            marker.style.left = Math.max(5, Math.min(85, position)) + '%';
+            marker.style.display = 'block';
+            label.innerHTML = avg + '<br>(S' + sampleNum + ')';
+            
+            // Store data
+            if (sampleNum === 1) sample1Data = parseFloat(avg);
+            else sample2Data = parseFloat(avg);
+            
+            // Update variation note
+            if (sample1Data && sample2Data) {
+                const diff = Math.abs(sample1Data - sample2Data).toFixed(1);
+                document.getElementById('variationNote').innerHTML = 
+                    `Sample 1 = <strong>${sample1Data}</strong>, Sample 2 = <strong>${sample2Data}</strong><br>
+                    Difference: <strong>${diff}</strong> — That's HIGH VARIATION from the same method!`;
+            }
+        }
+        
+        function generateSample1() { generateSample(1); }
+        function generateSample2() { generateSample(2); }
+    </script>
+</body>
+</html>

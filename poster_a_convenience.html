@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Group A: Convenience Sample Poster</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f5f5f5;
+            padding: 20px;
+        }
+        
+        .poster {
+            max-width: 850px;
+            margin: 0 auto;
+            background: white;
+            border: 3px solid #c62828;
+            border-radius: 8px;
+            padding: 25px;
+        }
+        
+        .group-badge {
+            background: #c62828;
+            color: white;
+            display: inline-block;
+            padding: 6px 20px;
+            border-radius: 20px;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+        
+        /* SECTION STYLING */
+        .section {
+            margin-bottom: 25px;
+            padding-bottom: 20px;
+            border-bottom: 2px dashed #ddd;
+        }
+        
+        .section:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+        }
+        
+        .section-label {
+            background: #424242;
+            color: white;
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        /* STORY SECTION */
+        .story-box {
+            background: #fff3e0;
+            border-left: 5px solid #ff9800;
+            padding: 15px;
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+        
+        .story-box strong {
+            color: #e65100;
+        }
+        
+        /* METHOD DECLARATION */
+        .method-declaration {
+            background: #ffebee;
+            border: 3px solid #c62828;
+            border-radius: 8px;
+            padding: 15px;
+            text-align: center;
+        }
+        
+        .method-declaration h2 {
+            color: #c62828;
+            font-size: 1.8rem;
+            margin-bottom: 5px;
+        }
+        
+        .method-declaration .subtitle {
+            color: #666;
+            font-style: italic;
+        }
+        
+        /* FIELD + THOUGHT PROCESS LAYOUT */
+        .field-thought-row {
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 20px;
+            align-items: start;
+        }
+        
+        /* FIELD GRID */
+        .field-wrapper {
+            background: #fafafa;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            padding: 15px;
+        }
+        
+        .field-container {
+            display: flex;
+            gap: 5px;
+            justify-content: center;
+            align-items: stretch;
+        }
+        
+        .side-label {
+            writing-mode: vertical-rl;
+            text-orientation: mixed;
+            padding: 8px 6px;
+            font-weight: bold;
+            font-size: 0.75rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 4px;
+            color: white;
+        }
+        
+        .river-label { background: #1565c0; }
+        .road-label { background: #6d4c41; }
+        
+        .field-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 38px);
+            gap: 1px;
+            background: #333;
+            border: 2px solid #333;
+        }
+        
+        .grid-header {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 5px;
+            font-weight: bold;
+            font-size: 0.75rem;
+        }
+        
+        .grid-cell {
+            text-align: center;
+            padding: 6px 2px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            background: white;
+        }
+        
+        .col-a { background: #a5d6a7; color: #1b5e20; }
+        .col-b { background: #c5e1a5; color: #33691e; }
+        .col-c { background: #fff59d; color: #f57f17; }
+        .col-d { background: #ffcc80; color: #e65100; }
+        .col-e { background: #ffab91; color: #bf360c; }
+        
+        .grid-cell.sampled {
+            border: 3px solid #c62828;
+            font-weight: bold;
+            position: relative;
+        }
+        
+        .grid-cell.dimmed {
+            opacity: 0.3;
+        }
+        
+        .car-icon {
+            text-align: center;
+            margin-top: 8px;
+            font-size: 1.5rem;
+        }
+        
+        /* THOUGHT PROCESS */
+        .thought-box {
+            background: #f5f5f5;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            padding: 15px;
+        }
+        
+        .thought-box h4 {
+            color: #c62828;
+            margin-bottom: 10px;
+            font-size: 0.95rem;
+        }
+        
+        .thought-content {
+            font-size: 0.95rem;
+            line-height: 1.8;
+        }
+        
+        .equation-box {
+            background: white;
+            border: 2px solid #c62828;
+            border-radius: 6px;
+            padding: 10px;
+            margin: 10px 0;
+            text-align: center;
+            font-family: 'Times New Roman', serif;
+            font-size: 1.1rem;
+        }
+        
+        /* RESULTS SECTION */
+        .results-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+        
+        .result-card {
+            background: #f5f5f5;
+            border-radius: 8px;
+            padding: 15px;
+            text-align: center;
+        }
+        
+        .result-card.sample {
+            border: 2px solid #c62828;
+            background: #ffebee;
+        }
+        
+        .result-card.true-mean {
+            border: 2px solid #4caf50;
+            background: #e8f5e9;
+        }
+        
+        .result-card .label {
+            font-size: 0.85rem;
+            color: #666;
+            margin-bottom: 5px;
+        }
+        
+        .result-card .value {
+            font-size: 2rem;
+            font-weight: bold;
+        }
+        
+        .result-card.sample .value { color: #c62828; }
+        .result-card.true-mean .value { color: #4caf50; }
+        
+        .result-card .note {
+            font-size: 0.8rem;
+            color: #888;
+            margin-top: 5px;
+            font-style: italic;
+        }
+        
+        /* NUMBER LINE */
+        .numberline-container {
+            background: #fafafa;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 15px 0;
+        }
+        
+        .numberline-container h4 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 15px;
+        }
+        
+        .numberline {
+            position: relative;
+            height: 60px;
+            margin: 0 30px;
+        }
+        
+        .numberline-axis {
+            position: absolute;
+            top: 25px;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: #333;
+        }
+        
+        .numberline-axis::before,
+        .numberline-axis::after {
+            content: '';
+            position: absolute;
+            top: -4px;
+            border: 6px solid transparent;
+        }
+        
+        .numberline-axis::before {
+            left: -10px;
+            border-right-color: #333;
+        }
+        
+        .numberline-axis::after {
+            right: -10px;
+            border-left-color: #333;
+        }
+        
+        .nl-marker {
+            position: absolute;
+            top: 0;
+            transform: translateX(-50%);
+            text-align: center;
+        }
+        
+        .nl-marker .dot {
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            margin: 0 auto 5px;
+        }
+        
+        .nl-marker .label {
+            font-size: 0.75rem;
+            font-weight: bold;
+        }
+        
+        .nl-marker.sample .dot { background: #c62828; }
+        .nl-marker.sample .label { color: #c62828; }
+        
+        .nl-marker.true-mean .dot { background: #4caf50; }
+        .nl-marker.true-mean .label { color: #4caf50; }
+        
+        .nl-tick {
+            position: absolute;
+            top: 20px;
+            width: 2px;
+            height: 10px;
+            background: #333;
+            transform: translateX(-50%);
+        }
+        
+        .nl-tick-label {
+            position: absolute;
+            top: 35px;
+            transform: translateX(-50%);
+            font-size: 0.7rem;
+            color: #666;
+        }
+        
+        .distance-note {
+            text-align: center;
+            margin-top: 15px;
+            font-size: 1rem;
+            color: #c62828;
+            font-weight: 500;
+        }
+        
+        /* CONCLUSION */
+        .conclusion-box {
+            background: #ffebee;
+            border: 3px solid #c62828;
+            border-radius: 8px;
+            padding: 20px;
+        }
+        
+        .conclusion-box h4 {
+            color: #c62828;
+            margin-bottom: 12px;
+        }
+        
+        .conclusion-item {
+            margin: 10px 0;
+            padding: 10px;
+            background: white;
+            border-radius: 6px;
+            border-left: 4px solid #c62828;
+        }
+        
+        .conclusion-item strong {
+            color: #c62828;
+        }
+        
+        .vocab-highlight {
+            background: #ffcdd2;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+        
+        /* MNEMONIC */
+        .mnemonic-box {
+            background: linear-gradient(135deg, #c62828, #e53935);
+            color: white;
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .mnemonic-box h4 {
+            margin-bottom: 10px;
+            font-size: 1rem;
+        }
+        
+        .mnemonic-text {
+            font-size: 1.4rem;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+        
+        /* TWO SAMPLES NOTE */
+        .two-samples-note {
+            background: #fff3e0;
+            border: 2px solid #ff9800;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 15px 0;
+        }
+        
+        .two-samples-note h4 {
+            color: #e65100;
+            margin-bottom: 10px;
+        }
+        
+        .two-samples-note p {
+            font-size: 0.95rem;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <div class="poster">
+        <span class="group-badge">GROUP A: CONVENIENCE SAMPLE</span>
+        
+        <!-- 1. THE STORY -->
+        <div class="section">
+            <span class="section-label">The Story</span>
+            <div class="story-box">
+                A farmer wants to know the <strong>average yield</strong> of his land, but only has time to measure <strong>5 plots</strong> of his total 50. Of the three sampling methods, our group explored <strong style="color: #c62828;">CONVENIENCE SAMPLING</strong>.
+            </div>
+        </div>
+        
+        <!-- 2. METHOD DECLARATION -->
+        <div class="section">
+            <span class="section-label">Our Method</span>
+            <div class="method-declaration">
+                <h2>CONVENIENCE SAMPLE</h2>
+                <p class="subtitle">"The farmer will take the average of the plots closest to him"</p>
+            </div>
+        </div>
+        
+        <!-- 3. FIELD + THOUGHT PROCESS -->
+        <div class="section">
+            <span class="section-label">The Field & Our Process</span>
+            <div class="field-thought-row">
+                <!-- Field Grid -->
+                <div class="field-wrapper">
+                    <div class="field-container">
+                        <div class="side-label river-label">🌊 RIVER<br>(High Water)</div>
+                        <div class="field-grid">
+                            <div class="grid-header">A</div>
+                            <div class="grid-header">B</div>
+                            <div class="grid-header">C</div>
+                            <div class="grid-header">D</div>
+                            <div class="grid-header">E</div>
+                            
+                            <div class="grid-cell col-a dimmed">103</div>
+                            <div class="grid-cell col-b dimmed">82</div>
+                            <div class="grid-cell col-c dimmed">63</div>
+                            <div class="grid-cell col-d dimmed">43</div>
+                            <div class="grid-cell col-e sampled">23</div>
+                            
+                            <div class="grid-cell col-a dimmed">97</div>
+                            <div class="grid-cell col-b dimmed">78</div>
+                            <div class="grid-cell col-c dimmed">58</div>
+                            <div class="grid-cell col-d dimmed">38</div>
+                            <div class="grid-cell col-e sampled">18</div>
+                            
+                            <div class="grid-cell col-a dimmed">108</div>
+                            <div class="grid-cell col-b dimmed">85</div>
+                            <div class="grid-cell col-c dimmed">67</div>
+                            <div class="grid-cell col-d dimmed">47</div>
+                            <div class="grid-cell col-e sampled">27</div>
+                            
+                            <div class="grid-cell col-a dimmed">95</div>
+                            <div class="grid-cell col-b dimmed">73</div>
+                            <div class="grid-cell col-c dimmed">54</div>
+                            <div class="grid-cell col-d dimmed">35</div>
+                            <div class="grid-cell col-e sampled">14</div>
+                            
+                            <div class="grid-cell col-a dimmed">101</div>
+                            <div class="grid-cell col-b dimmed">88</div>
+                            <div class="grid-cell col-c dimmed">61</div>
+                            <div class="grid-cell col-d dimmed">41</div>
+                            <div class="grid-cell col-e sampled">21</div>
+                            
+                            <div class="grid-cell col-a dimmed">92</div>
+                            <div class="grid-cell col-b dimmed">76</div>
+                            <div class="grid-cell col-c dimmed">55</div>
+                            <div class="grid-cell col-d dimmed">33</div>
+                            <div class="grid-cell col-e">16</div>
+                            
+                            <div class="grid-cell col-a dimmed">106</div>
+                            <div class="grid-cell col-b dimmed">81</div>
+                            <div class="grid-cell col-c dimmed">69</div>
+                            <div class="grid-cell col-d dimmed">46</div>
+                            <div class="grid-cell col-e">25</div>
+                            
+                            <div class="grid-cell col-a dimmed">99</div>
+                            <div class="grid-cell col-b dimmed">79</div>
+                            <div class="grid-cell col-c dimmed">52</div>
+                            <div class="grid-cell col-d dimmed">39</div>
+                            <div class="grid-cell col-e">19</div>
+                            
+                            <div class="grid-cell col-a dimmed">104</div>
+                            <div class="grid-cell col-b dimmed">84</div>
+                            <div class="grid-cell col-c dimmed">66</div>
+                            <div class="grid-cell col-d dimmed">44</div>
+                            <div class="grid-cell col-e">24</div>
+                            
+                            <div class="grid-cell col-a dimmed">91</div>
+                            <div class="grid-cell col-b dimmed">72</div>
+                            <div class="grid-cell col-c dimmed">57</div>
+                            <div class="grid-cell col-d dimmed">32</div>
+                            <div class="grid-cell col-e">12</div>
+                        </div>
+                        <div class="side-label road-label">🛤️ ROAD<br>(Low Water)</div>
+                    </div>
+                    <div class="car-icon">🚗 ← Farmer's car parked here</div>
+                </div>
+                
+                <!-- Thought Process -->
+                <div class="thought-box">
+                    <h4>💭 Our Thought Process</h4>
+                    <div class="thought-content">
+                        <p>The farmer only samples plots <strong>closest to where he parked</strong> (the road).</p>
+                        <p style="margin-top: 10px;">We take the 5 easiest plots to reach:</p>
+                        <p style="margin-top: 10px; font-family: monospace; background: white; padding: 8px; border-radius: 4px;">
+                            E1, E2, E3, E4, E5
+                        </p>
+                    </div>
+                    <div class="equation-box">
+                        Average = <sup>Total</sup>/<sub>Sample Size</sub>
+                    </div>
+                    <div class="thought-content">
+                        <p style="font-family: monospace; font-size: 0.9rem;">
+                            = (23 + 18 + 27 + 14 + 21) / 5<br>
+                            = 103 / 5<br>
+                            = <strong style="color: #c62828;">20.6</strong>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 4. RESULTS -->
+        <div class="section">
+            <span class="section-label">The Results</span>
+            
+            <div class="results-row">
+                <div class="result-card sample">
+                    <div class="label">Our Sample Mean</div>
+                    <div class="value">20.6</div>
+                </div>
+                <div class="result-card true-mean">
+                    <div class="label">True Population Mean</div>
+                    <div class="value">59.86</div>
+                    <div class="note">(The farmer can't know this due to time constraints)</div>
+                </div>
+            </div>
+            
+            <div class="numberline-container">
+                <h4>How far off is our estimate?</h4>
+                <div class="numberline">
+                    <div class="numberline-axis"></div>
+                    
+                    <!-- Tick marks -->
+                    <div class="nl-tick" style="left: 10%;"></div>
+                    <div class="nl-tick-label" style="left: 10%;">20</div>
+                    
+                    <div class="nl-tick" style="left: 30%;"></div>
+                    <div class="nl-tick-label" style="left: 30%;">40</div>
+                    
+                    <div class="nl-tick" style="left: 50%;"></div>
+                    <div class="nl-tick-label" style="left: 50%;">60</div>
+                    
+                    <div class="nl-tick" style="left: 70%;"></div>
+                    <div class="nl-tick-label" style="left: 70%;">80</div>
+                    
+                    <!-- Markers -->
+                    <div class="nl-marker sample" style="left: 11%;">
+                        <div class="dot"></div>
+                        <div class="label">20.6<br>(Sample)</div>
+                    </div>
+                    
+                    <div class="nl-marker true-mean" style="left: 50%;">
+                        <div class="dot"></div>
+                        <div class="label">59.86<br>(True)</div>
+                    </div>
+                </div>
+                <div class="distance-note">
+                    Our estimate is <strong>39.26 bushels TOO LOW</strong> (20.6 − 59.86 = −39.26)
+                </div>
+            </div>
+            
+            <div class="two-samples-note">
+                <h4>🔄 What if we sample again?</h4>
+                <p>If we take <strong>another</strong> convenience sample (say, E6-E10), we get: (16 + 25 + 19 + 24 + 12) / 5 = <strong>19.2</strong></p>
+                <p style="margin-top: 8px;">Both samples are <strong>consistently too low</strong>. The problem isn't random—it's systematic.</p>
+            </div>
+        </div>
+        
+        <!-- 5. CONCLUSION -->
+        <div class="section">
+            <span class="section-label">Conclusion</span>
+            <div class="conclusion-box">
+                <h4>What does this mean for Convenience Sampling?</h4>
+                
+                <div class="conclusion-item">
+                    <strong>BIAS:</strong> This method is <span class="vocab-highlight">BIASED</span> due to <span class="vocab-highlight">UNDERCOVERAGE</span>. We systematically excluded plots near the river which had higher yields.
+                </div>
+                
+                <div class="conclusion-item">
+                    <strong>VARIABILITY:</strong> Low variability, but in a <em>bad way</em>—our estimates are consistently wrong in the same direction.
+                </div>
+                
+                <div class="conclusion-item">
+                    <strong>VERDICT:</strong> Convenience sampling is fast and cheap, but <strong>NOT RECOMMENDED</strong> when the population has systematic differences across locations.
+                </div>
+            </div>
+        </div>
+        
+        <!-- 6. MNEMONIC -->
+        <div class="section">
+            <div class="mnemonic-box">
+                <h4>📝 Remember This:</h4>
+                <div class="mnemonic-text">
+                    "Convenience is EASY but BIASED—<br>you miss what you don't bother to see."
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
